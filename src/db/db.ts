@@ -11,7 +11,8 @@ export const AppDataSourceOptions: DataSourceOptions = {
   password: process.env.DATABASE_PASSWORD,
   database: 'e-library',
   entities: [Book],
-  synchronize: true,
+  migrations: ['./dist/migrations/*.js'],
 };
 
-new DataSource(AppDataSourceOptions).initialize();
+export const dataSource: DataSource = new DataSource(AppDataSourceOptions);
+dataSource.initialize();
