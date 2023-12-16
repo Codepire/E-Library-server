@@ -22,11 +22,11 @@ import { Response } from 'express';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
-import { ConfigService } from '@nestjs/config';
+import { ConfigsService } from 'src/config/configs.service';
 
 @Controller('books')
 @UseGuards(
-  new AuthGuard(new JwtService(), new Reflector(), new ConfigService()),
+  new AuthGuard(new JwtService(), new Reflector(), new ConfigsService()),
 )
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
