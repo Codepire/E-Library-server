@@ -15,7 +15,10 @@ async function bootstrap() {
   initialUploadsConfig();
   app.useStaticAssets(path.join(__dirname, '../uploads/'));
 
-  const swaggerConfig = new DocumentBuilder().setTitle('SOU E Library').setVersion('1.0').build();
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('SOU E Library')
+    .setVersion('1.0')
+    .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
