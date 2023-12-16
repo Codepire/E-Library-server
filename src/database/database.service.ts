@@ -4,19 +4,19 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 
 @Injectable()
 export class DatabaseService {
-  constructor(private configsService: ConfigsService) {}
+    constructor(private configsService: ConfigsService) {}
 
-  dataSource(): DataSourceOptions {
-    const databaseOptions = this.configsService.databaseConfig;
-    return {
-      type: 'postgres',
-      ...databaseOptions,
-    };
-  }
+    dataSource(): DataSourceOptions {
+        const databaseOptions = this.configsService.databaseConfig;
+        return {
+            type: 'postgres',
+            ...databaseOptions,
+        };
+    }
 }
 
 const dataSourceOptions: DatabaseService = new DatabaseService(
-  new ConfigsService(),
+    new ConfigsService(),
 );
 
 export default new DataSource(dataSourceOptions.dataSource());

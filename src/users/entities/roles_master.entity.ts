@@ -3,9 +3,9 @@ import { User } from './user.entity';
 
 @Entity()
 export class RolesMaster {
-  @PrimaryColumn()
-  role: string;
+    @PrimaryColumn()
+    role: string;
 
-  @OneToMany(() => User, (user) => user.role)
-  users: User;
+    @OneToMany(() => User, (user) => user.role)
+    users: User;
 }

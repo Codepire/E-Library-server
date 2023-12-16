@@ -8,24 +8,24 @@ import { ConfigsModule } from './config/configs.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [
-    JwtModule.register({
-      global: true,
-    }),
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigsService],
-      imports: [ConfigsModule],
-      useFactory: async (configsService: ConfigsService) => {
-        const databaseConfig = configsService.databaseConfig;
-        return {
-          type: 'postgres',
-          ...databaseConfig,
-        };
-      },
-    }),
-    BooksModule,
-    DatabaseModule,
-    AuthModule,
-  ],
+    imports: [
+        JwtModule.register({
+            global: true,
+        }),
+        TypeOrmModule.forRootAsync({
+            inject: [ConfigsService],
+            imports: [ConfigsModule],
+            useFactory: async (configsService: ConfigsService) => {
+                const databaseConfig = configsService.databaseConfig;
+                return {
+                    type: 'postgres',
+                    ...databaseConfig,
+                };
+            },
+        }),
+        BooksModule,
+        DatabaseModule,
+        AuthModule,
+    ],
 })
 export class AppModule {}

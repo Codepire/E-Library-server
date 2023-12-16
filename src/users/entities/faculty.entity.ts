@@ -3,12 +3,12 @@ import { Book } from 'src/books/entities/book.entity';
 
 @Entity()
 export class Faculty {
-  @PrimaryColumn()
-  username: string;
+    @PrimaryColumn()
+    username: string;
 
-  // @OneToMany(() => Book, (book) => book.created_by)
-  // created_books: string;
+    // @OneToMany(() => Book, (book) => book.created_by)
+    // created_books: string;
 
-  // @OneToMany(() => Book, (book) => book.updated_by)
-  // updated_books: string;
+    // @OneToMany(() => Book, (book) => book.updated_by)
+    // updated_books: string;
 }

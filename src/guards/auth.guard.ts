@@ -7,35 +7,35 @@ import { ConfigsService } from 'src/config/configs.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(
-    private jwtService: JwtService,
-    private reflector: Reflector,
-    private configsService: ConfigsService,
-  ) {}
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
-    try {
-      const request: Request = context.switchToHttp().getRequest();
-      const jwtToken = request.headers.authorization.split(' ')[1];
+    constructor(
+        private jwtService: JwtService,
+        private reflector: Reflector,
+        private configsService: ConfigsService,
+    ) {}
+    canActivate(
+        context: ExecutionContext,
+    ): boolean | Promise<boolean> | Observable<boolean> {
+        try {
+            const request: Request = context.switchToHttp().getRequest();
+            const jwtToken = request.headers.authorization.split(' ')[1];
 
-      const response = this.jwtService.verify(jwtToken, {
-        secret: this.configsService.jwtConfig.secretKye,
-      });
+            const response = this.jwtService.verify(jwtToken, {
+                secret: this.configsService.jwtConfig.secretKye,
+            });
 
-      const metaData = this.reflector.get<string>(
-        'roles',
-        context.getHandler(),
-      );
+            const metaData = this.reflector.get<string>(
+                'roles',
+                context.getHandler(),
+            );
 
-      if (metaData.includes(response.role)) {
-        return true;
-      } else {
-        return false;
-      }
-    } catch (err) {
-      // console.log(err);
-      return false;
+            if (metaData.includes(response.role)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (err) {
+            // console.log(err);
+            return false;
+        }
     }
-  }
 }

@@ -6,26 +6,26 @@ import { apiResponse } from 'src/common/interfaces/apiResponse.interface';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User)
-    private readonly usersRepository: Repository<User>,
-  ) {}
+    constructor(
+        @InjectRepository(User)
+        private readonly usersRepository: Repository<User>,
+    ) {}
 
-  async findUserByUsername(username: string): Promise<apiResponse> {
-    const foundUser: User = await this.usersRepository.findOne({
-      where: {
-        username,
-      },
-    });
+    async findUserByUsername(username: string): Promise<apiResponse> {
+        const foundUser: User = await this.usersRepository.findOne({
+            where: {
+                username,
+            },
+        });
 
-    if (!foundUser) {
-      throw new NotFoundException('User not found.');
+        if (!foundUser) {
+            throw new NotFoundException('User not found.');
+        }
+
+        return {
+            statusCode: HttpStatus.OK,
+            response: 'success',
+            data: foundUser,
+        };
     }
-
-    return {
-      statusCode: HttpStatus.OK,
-      response: 'success',
-      data: foundUser,
-    };
-  }
 }

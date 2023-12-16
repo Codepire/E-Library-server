@@ -1,5 +1,5 @@
 export interface apiResponse {
-  statusCode: number;
-  response: string;
-  data?: any;
+    statusCode: number;
+    response: string;
+    data?: any;
 }

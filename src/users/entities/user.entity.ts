@@ -3,12 +3,12 @@ import { RolesMaster } from './roles_master.entity';
 
 @Entity()
 export class User {
-  @PrimaryColumn()
-  username: string;
+    @PrimaryColumn()
+    username: string;
 
-  @Column()
-  password: string;
+    @Column()
+    password: string;
 
-  @ManyToOne(() => RolesMaster, (rolesMaster) => rolesMaster.users)
-  role: RolesMaster;
+    @ManyToOne(() => RolesMaster, (rolesMaster) => rolesMaster.users)
+    role: RolesMaster;
 }
