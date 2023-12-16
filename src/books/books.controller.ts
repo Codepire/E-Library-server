@@ -23,7 +23,9 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { ConfigsService } from 'src/config/configs.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Books Module')
 @Controller('books')
 @UseGuards(
   new AuthGuard(new JwtService(), new Reflector(), new ConfigsService()),
