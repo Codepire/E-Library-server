@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { config } from 'dotenv';
 
-config({ path: '.dev.local.env' });
-
+config({ path: `${process.cwd()}/.dev.local.env` });
 @Injectable()
 export class ConfigsService {
   get databaseConfig() {
