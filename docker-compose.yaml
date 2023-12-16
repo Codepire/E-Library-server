@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: sou-library-postgres
+    environment:
+      POSTGRES_DB: sou-library
+      POSTGRES_USER: codepire
+      POSTGRES_PASSWORD: codepire@123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
